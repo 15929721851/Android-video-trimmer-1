@@ -3,7 +3,6 @@ package com.gowtham.videotrimmer;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void openTrimActivity(String data) {
         if (trimType == 0) {
             TrimVideo.activity(data)
-//                  .setCompressOption(new CompressOption()) //pass empty constructor for default compress option
+                    .setCompressOption(new CompressOption()) //pass empty constructor for default compress option
                     .setDestination("/storage/emulated/0/DCIM/TESTFOLDER")
                     .start(this);
         } else if (trimType == 1) {

@@ -3,31 +3,59 @@ package com.gowtham.library.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
+/**
+ * @CompressOption
+ **/
 public class CompressOption implements Parcelable {
 
     private int frameRate=30;
 
-    private String bitRate="0k";
+    private int bitRate;
 
-    private int width=0;
+    private int width;
 
-    private int height=0;
+    private int height;
 
     public CompressOption() {
     }
 
-    public CompressOption(int frameRate, String bitRate, int width, int height) {
+    /**
+     * @param frameRate is the frame rate of a video format in frames/sec.
+     * @param bitRate is describing the average bitrate in mb/sec.
+     * @param height is describing the height of the video.
+     * @param width is describing the width of the video.
+     */
+    public CompressOption(int frameRate, int bitRate, int width, int height) {
         this.frameRate = frameRate;
         this.bitRate = bitRate;
         this.width = width;
         this.height = height;
     }
 
+    /**
+     * @param frameRate is the frame rate of a video format in frames/sec.
+     * @param bitRate is describing the average bitrate in mb/sec.
+     */
+    public CompressOption(int frameRate, int bitRate) {
+        this.frameRate = frameRate;
+        this.bitRate = bitRate;
+    }
+
+    /**
+     * @param bitRate is describing the average bitrate in mb/sec.
+     */
+    public CompressOption(int bitRate) {
+        this.bitRate = bitRate;
+    }
+
+
     public void setFrameRate(int frameRate) {
         this.frameRate = frameRate;
     }
 
-    public void setBitRate(String bitRate) {
+    public void setBitRate(int bitRate) {
         this.bitRate = bitRate;
     }
 
@@ -51,7 +79,7 @@ public class CompressOption implements Parcelable {
         return frameRate;
     }
 
-    public String getBitRate() {
+    public int getBitRate() {
         return bitRate;
     }
 
@@ -67,14 +95,14 @@ public class CompressOption implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.frameRate);
-        dest.writeString(this.bitRate);
+        dest.writeInt(this.bitRate);
         dest.writeInt(this.width);
         dest.writeInt(this.height);
     }
 
     protected CompressOption(Parcel in) {
         this.frameRate = in.readInt();
-        this.bitRate = in.readString();
+        this.bitRate = in.readInt();
         this.width = in.readInt();
         this.height = in.readInt();
     }

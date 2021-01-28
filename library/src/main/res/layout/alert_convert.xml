@@ -9,6 +9,9 @@
         android:id="@+id/progress_trimmer"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        style="?android:progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/progress"
+        android:max="100"
         android:layout_marginTop="5dp"
         />
 <!--

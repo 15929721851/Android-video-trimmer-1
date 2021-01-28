@@ -57,11 +57,6 @@ public class TrimVideo {
             return this;
         }
 
-        public ActivityBuilder setAccurateCut(final boolean accurate) {
-            options.accurateCut = accurate;
-            return this;
-        }
-
         public ActivityBuilder setMinDuration(final long minDuration) {
             options.minDuration = minDuration;
             return this;
