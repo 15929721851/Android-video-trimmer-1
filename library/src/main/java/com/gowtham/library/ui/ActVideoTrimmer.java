@@ -514,13 +514,17 @@ public class ActVideoTrimmer extends AppCompatActivity {
 
     private MediaFormat getVideoFormat() {
         //No compression option
-        if (compressOption == null)
+        if (compressOption == null) {
+            LogMessage.v("No compression option used");
             return null;
+        }
         //Default compress option
         else if (compressOption.getBitRate() <= 0 && compressOption.getFrameRate() == 30
                 && compressOption.getHeight() <= 0 && compressOption.getWidth() <= 0) {
+            LogMessage.v("Default compression option used");
             return getDefaultVideoFormat();
         } else {
+            LogMessage.v("Custom compression option used");
             int[] widthHeight = TrimmerUtils.getVideoWidthHeight(this, uri);
             int width = compressOption.getWidth();
             int height = compressOption.getHeight();
@@ -537,7 +541,8 @@ public class ActVideoTrimmer extends AppCompatActivity {
             mediaFormat.setString(MediaFormat.KEY_MIME, mimeType);
             mediaFormat.setInteger(MediaFormat.KEY_WIDTH, width);
             mediaFormat.setInteger(MediaFormat.KEY_HEIGHT, height);
-            mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, compressOption.getBitRate() * 1000000);
+            mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE,
+                    compressOption.getBitRate() * 1000000);
             mediaFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 5);
             mediaFormat.setInteger(MediaFormat.KEY_FRAME_RATE, compressOption.getFrameRate());
             return mediaFormat;

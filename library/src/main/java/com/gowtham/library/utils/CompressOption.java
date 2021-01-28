@@ -22,17 +22,12 @@ public class CompressOption implements Parcelable {
     }
 
     /**
-     * @param frameRate is the frame rate of a video format in frames/sec.
      * @param bitRate is describing the average bitrate in mb/sec.
-     * @param height is describing the height of the video.
-     * @param width is describing the width of the video.
      */
-    public CompressOption(int frameRate, int bitRate, int width, int height) {
-        this.frameRate = frameRate;
+    public CompressOption(int bitRate) {
         this.bitRate = bitRate;
-        this.width = width;
-        this.height = height;
     }
+
 
     /**
      * @param frameRate is the frame rate of a video format in frames/sec.
@@ -44,12 +39,17 @@ public class CompressOption implements Parcelable {
     }
 
     /**
+     * @param frameRate is the frame rate of a video format in frames/sec.
      * @param bitRate is describing the average bitrate in mb/sec.
+     * @param height is describing the height of the video.
+     * @param width is describing the width of the video.
      */
-    public CompressOption(int bitRate) {
+    public CompressOption(int frameRate, int bitRate, int width, int height) {
+        this.frameRate = frameRate;
         this.bitRate = bitRate;
+        this.width = width;
+        this.height = height;
     }
-
 
     public void setFrameRate(int frameRate) {
         this.frameRate = frameRate;

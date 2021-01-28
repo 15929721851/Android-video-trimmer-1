@@ -17,7 +17,7 @@
  ```gradle
  dependencies {
     implementation 'com.github.a914-gowtham:Android-video-trimmer:1.5.2'
- }
+ }   
  ```
  + Add to project's root `build.gradle` file:
 ```gradle
@@ -49,37 +49,10 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 #### Video Compress:
 ```java
-.setCompressOption(new CompressOption(frameRate,bitRate,width,height))  //pass empty constructor for default compressoption
+.setCompressOption(new CompressOption(bitRate))  //pass empty constructor for default compressoption
 ```
-  * `FrameRate` Recommeded frameRate is 30
-  * `BitRate`   Bitrate Can be between 150k to 1000k or 1M to 10M.Lower bitrate can reduce the quality and size of the video.
-               Use 1M for better quality output 
-  * `Width` Width of the video output video. 
-  * `Height` Height of the video output video.Use `TrimmerUtils.getVideoWidthHeight(this,Uri.parse(videoUri));` method to get the width and height of the video
-   1. No need to use accurateCut while using video compressOption
-   2. Video compressing process will take more time
-```java 
-.setCompressOption(new CompressOption(30,"1M",460,320))
-//You could divide the width and height by 2. when try to compress a large resolution videos ex:Taken from camera
-/*int[] wAndh=TrimmerUtils.getVideoWidthHeight(this,Uri.parse(videoUri));
-    int width=wAndh[0];
-    int height=wAndh[1];
-    if(wAndh[0]>800){
-      width/=2;
-      width/=2;
-     .setCompressOption(new CompressOption(30,"1M",width,height))   
-     }else
-     .setCompressOption(new CompressOption(30,"400k",width,height))   
-   */
-```
+  * `BitRate`   Bitrate Can be between 1 to 10.Lower bitrate can reduce the quality and size of the video.
    
-#### Video Trim Accuracy:
-```java
-.setAccurateCut(true) //default value is false 
-```
-   1. AccurateCut **false** makes video trimming faster and less accuracy(approx. 1-3secs) 
-   2. AccurateCut **true** makes video trimming slower and high accuracy
-
 #### Hide Player Seekbar:
 ```java
 .setHideSeekBar(true) //default value is false 
@@ -131,44 +104,13 @@ TrimVideo.activity(videoUri)
   
 ## ChangeLog
 ### Version 1.5.2
-  * Thumbnail loading optimized
-### Version 1.5.1
-  * Controller seekbar bug fixed
-### Version 1.5.0
-  * Audio focus added
-  * Bug fixes on Android 11
-  * ui improvements
-### Version 1.4.4
-  * Exoplayer version updated to 2.12.1
-### Version 1.4.2
-  * Toolbar title softcoded 
-  
-### Version 1.4.1
-  * Can be started from fragment
-  * Added Custom fileName for the output video
-  
-### Version 1.4.0
-  * FFmpegMedia lib changed into Mobile-ffmpeg 
-### Version 1.0.9
-  * Library size reduced 
-  * Library size : 12mb(release build)
-  * Constants class name changed into TrimmerConstants
-  * Added TrimmerUtils class which has getVideoDuration() method and some more VideoUtils methods
-
-### Version 1.0.5
-  * Fixed issue on Android Q.
-  * Library size : 26mb(debug build).
-  * Small UI updates.
-  * Couple new things to configure.
-
-### Version 1.0.0
-  * Initial Build
+  * First version of litr-version
   
 ## Thanks to 
-[TanerSener](https://github.com/tanersener/mobile-ffmpeg)
+[LiTr](https://github.com/linkedin/LiTr)
 
 ## Support 
-Show your support by giving a star to this repository.that's how i know the usage of this library so this can keep me motivated to make improvements 
+Show your support by giving star to this repository.that's how i know the usage of this library so this can keep me motivated to make improvements 
   
 ## Collaboration
 There are many ways of improving and adding more features, so feel free to collaborate with ideas, issues and/or pull requests. 

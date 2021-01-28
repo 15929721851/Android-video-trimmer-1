@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void openTrimActivity(String data) {
         if (trimType == 0) {
             TrimVideo.activity(data)
-                    .setCompressOption(new CompressOption()) //pass empty constructor for default compress option
+                    .setCompressOption(new CompressOption(3)) //pass empty constructor for default compress option
                     .setDestination("/storage/emulated/0/DCIM/TESTFOLDER")
                     .start(this);
         } else if (trimType == 1) {
